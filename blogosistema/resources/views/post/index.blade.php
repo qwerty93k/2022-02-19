@@ -19,11 +19,11 @@
                 <div class="card">
                         <table class="table table-striped">
                             <tr>
-                                <th>Id</th>
-                                <th>Title</th>
-                                <th>Author</th>
-                                <th>Content</th>
-                                <th>Category</th>
+                                <th>@sortablelink('id', 'Id')</th>
+                                <th>@sortablelink('title', 'Title')</th>
+                                <th>@sortablelink('author_name', 'Author')</th>
+                                <th>@sortablelink('content', 'Content')</th>
+                                <th>@sortablelink('category_id', 'Category')</th>
                                 <th>Action</th>
                             </tr>
                             @foreach ($posts as $post)

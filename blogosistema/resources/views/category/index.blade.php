@@ -19,9 +19,9 @@
                 <div class="card">
                         <table class="table table-striped">
                             <tr>
-                                <th>Id</th>
-                                <th>Category</th>
-                                <th>Description</th>
+                                <th>@sortablelink('id', 'Id')</th>
+                                <th>@sortablelink('title', 'Category')</th>
+                                <th>@sortablelink('description', 'Description')</th>
                                 <th>Action</th>
                             </tr>
                             @foreach ($categories as $category)
