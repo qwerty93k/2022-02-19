@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -15,7 +17,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('post.index', ['posts' => $posts]);
     }
 
     /**
@@ -25,7 +28,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $posts = Post::all();
+        $categories = Category::all();
+
+        return view('post.create', ['posts' => $posts, 'categories' => $categories]);
     }
 
     /**
@@ -34,9 +40,17 @@ class PostController extends Controller
      * @param  \App\Http\Requests\StorePostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
-        //
+        $post = new Post;
+
+        $post->title = $request->title;
+        $post->author_name = $request->author_name;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+
+        $post->save();
+        return redirect()->route('post.index');
     }
 
     /**
@@ -47,7 +61,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show', ['post' => $post]);
     }
 
     /**
@@ -58,7 +72,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $categories = Category::all();
+        return view('post.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     /**
@@ -68,9 +83,15 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePostRequest $request, Post $post)
+    public function update(Request $request, Post $post)
     {
-        //
+        $post->title = $request->title;
+        $post->author_name = $request->author_name;
+        $post->content = $request->content;
+        $post->category_id = $request->category_id;
+
+        $post->save();
+        return redirect()->route('post.index');
     }
 
     /**
@@ -81,6 +102,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route('post.index')->with('success_message', 'Successfully deleted');
     }
 }
