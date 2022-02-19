@@ -13,4 +13,9 @@ class Category extends Model
     use Sortable;
 
     public $sortable = ['id', 'title', 'description'];
+
+    public function postCount()
+    {
+        return $this->hasMany(Post::class, 'category_id', 'id');
+    }
 }

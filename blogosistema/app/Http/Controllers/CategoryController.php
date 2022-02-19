@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -54,9 +55,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $category, Request $request)
     {
-        return view('category.show', ['category' => $category]);
+
+        $category_id = $request->category_id;
+        $posts = Post::where('category_id', '=', $category_id)->get();
+
+        return view('category.show', ['category' => $category, 'posts' => $posts]);
     }
 
     /**
