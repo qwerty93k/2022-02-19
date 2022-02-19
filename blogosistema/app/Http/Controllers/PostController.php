@@ -17,8 +17,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::sortable()->get();
-        return view('post.index', ['posts' => $posts]);
+        $posts = Post::sortable()->paginate(15);
+        $categories = Category::all();
+
+        return view('post.index', ['posts' => $posts, 'categories' => $categories]);
     }
 
     /**
@@ -104,5 +106,17 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect()->route('post.index')->with('success_message', 'Successfully deleted');
+    }
+
+    public function indexFilter(Request $request)
+    {
+        $category_id = $request->category_id;
+        $postcategory = Post::orderBy('id', 'asc')->get();
+
+        $posts = Post::where('category_id', '=', $category_id)->paginate(15);
+        return view('post.indexfilter', [
+            'posts' => $posts,
+            'postcategory' => $postcategory
+        ]);
     }
 }

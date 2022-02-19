@@ -2,29 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                @if(session()->has('error_message'))
-                    <div class="alert alert-danger">
-                        {{session()->get('error_message')}}
-                    </div>
-                 @endif
-        
-                @if(session()->has('success_message'))
-                    <div class="alert alert-success ">
-                        {{session()->get('success_message')}}
-                    </div>
-                @endif
-                <a class="btn btn-primary" href="{{route('post.create')}}">Create Post</a>
-                    {{--FILTER--}}
-                <form method="GET" action="{{route('post.indexfilter')}}">
-                    @csrf
-                    <select name="category_id">
-                    @foreach ($categories as $title)
-                        <option value={{$title->id}}>{{$title->title}}</option>
-                    @endforeach
-                </select>
-                <button type="submit" class="btn btn-secondary">Filter</button>
+                <a class="btn btn-primary" href="{{route('post.index')}}">Back</a>
                 <div class="card">
                         <table class="table table-striped">
                             <tr>

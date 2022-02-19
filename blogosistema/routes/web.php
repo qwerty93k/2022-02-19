@@ -44,4 +44,5 @@ Route::prefix('post')->group(function () {
     Route::post('update/{post}', 'App\Http\Controllers\PostController@update')->name('post.update');
     Route::post('destroy/{post}', 'App\Http\Controllers\PostController@destroy')->name('post.destroy');
     Route::get('show/{post}', 'App\Http\Controllers\PostController@show')->name('post.show');
+    Route::get('indexfilter', 'App\Http\Controllers\PostController@indexfilter')->name('post.indexfilter');
 });
