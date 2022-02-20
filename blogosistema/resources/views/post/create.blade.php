@@ -55,7 +55,7 @@
                             <div class="row mb-3 cat_info d-none">
                                 <div class="col-md-6">
                                     <label for="title">Category name</label>
-                                    <input class="form-control" type='text' name='title' />
+                                    <input class="form-control" type='text' name='cat_title' />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="description">Description</label>

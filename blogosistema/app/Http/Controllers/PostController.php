@@ -49,7 +49,6 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->author_name = $request->author_name;
         $post->content = $request->content;
-        $post->category_id = $request->category_id;
 
         //jeigu checkbox pazymetas
 
@@ -57,11 +56,13 @@ class PostController extends Controller
 
             $category = new Category;
 
-            $category->title = $request->title;
+            $category->title = $request->cat_title;
             $category->description = $request->description;
             $category->save();
 
             $post->category_id = $category->id;
+        } else { //checkbox nepazymetas
+            $post->category_id = $request->category_id;
         }
 
         $post->save();
