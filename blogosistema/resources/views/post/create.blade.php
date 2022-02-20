@@ -35,7 +35,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-3 category_id">
                                 <label for="category_id" class="col-md-4 col-form-label text-md-end">Category</label>
     
                                 <div class="col-md-6">
@@ -44,9 +44,25 @@
                                             <option value={{$title->id}}>{{$title->title}}</option>
                                         @endforeach
                                     </select>
+                                    {{--New Category--}}
+                                    <div class="form-group">
+                                        <label for="new_cat">Add new Category?</label>
+                                        <input id="new_cat" type="checkbox" name="new_cat"/>
+                                    </div>
                                 </div>
                             </div>
-
+                            {{--New Category Form--}}
+                            <div class="row mb-3 cat_info d-none">
+                                <div class="col-md-6">
+                                    <label for="title">Category name</label>
+                                    <input class="form-control" type='text' name='title' />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="description">Description</label>
+                                    <input class="form-control" type='text' name='description' />
+                                </div>
+                            </div>
+                            {{--Buttons--}}
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -54,11 +70,20 @@
                                     </button>
                                     <a class="btn btn-secondary" href="{{route('post.index')}}">Back</a>
                                 </div>
-                            </div>
+                            </div>           
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {{--Išskleidžia formą--}}
+    <script>
+        $(document).ready(function(){
+            $('#new_cat').click(function(){
+                $(".cat_info").toggleClass('d-none'); //ijungia
+                $(".category_id").toggleClass('d-none'); //isjungia
+            })
+        })
+    </script>   
 @endsection

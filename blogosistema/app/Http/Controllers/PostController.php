@@ -51,7 +51,21 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->category_id = $request->category_id;
 
+        //jeigu checkbox pazymetas
+
+        if ($request->new_cat) {
+
+            $category = new Category;
+
+            $category->title = $request->title;
+            $category->description = $request->description;
+            $category->save();
+
+            $post->category_id = $category->id;
+        }
+
         $post->save();
+
         return redirect()->route('post.index');
     }
 
