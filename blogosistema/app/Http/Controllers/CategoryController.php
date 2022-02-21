@@ -46,6 +46,23 @@ class CategoryController extends Controller
         $category->description = $request->description;
 
         $category->save();
+
+        //jeigu checkbox pazymetas
+        if ($request->new_post) { //check box
+
+            $post_count = count($request->post_title);
+
+            for ($i = 0; $i < $post_count; $i++) {
+                $post = new Post;
+
+                $post->title = $request->post_title[$i];
+                $post->author_name = $request->post_author[$i];
+                $post->content = $request->post_content[$i];
+                $post->category_id = $category->id;
+                $post->save();
+            }
+        }
+
         return redirect()->route('category.index');
     }
 

@@ -59,10 +59,10 @@
                 $('#new_post').click(function(){
                     $(".post_form").toggleClass('d-none'); //ijungia
                 })
-                $('#add_field').click(function(){
-                    $('.form').append('<div class="forma"><div class="row mb-3"><label for="title" class="col-md-4 col-form-label text-md-end">Title</label><div class="col-md-6"><input id="title" type="text" class="form-control" name="title" required autofocus></div></div><div class="row mb-3"><label for="author_name" class="col-md-4 col-form-label text-md-end">Author</label><div class="col-md-6"><input id="author_name" type="text" class="form-control" name="author_name" required autofocus></div></div><div class="row mb-3"><label for="content" class="col-md-4 col-form-label text-md-end">Content</label><div class="col-md-6"><textarea id="content" type="text" class="form-control" name="content" cols="30" rows="10" required autofocus></textarea></div></div>');
+                $('#add_field').click(function(){ //posto forma
+                    $('.form').append('<div class="forma"><div class="row mb-3"><label for="post_title" class="col-md-4 col-form-label text-md-end">Title</label><div class="col-md-6"><input id="post_title" type="text" class="form-control" name="post_title[]" required autofocus></div></div><div class="row mb-3"><label for="post_author" class="col-md-4 col-form-label text-md-end">Author</label><div class="col-md-6"><input id="post_author" type="text" class="form-control" name="post_author[]" required autofocus></div></div><div class="row mb-3"><label for="post_content" class="col-md-4 col-form-label text-md-end">Content</label><div class="col-md-6"><textarea id="post_content" type="text" class="form-control" name="post_content[]" cols="30" rows="10" required autofocus></textarea></div></div>');
                 });
-                $('#remove_field').click(function(){
+                $('#remove_field').click(function(){ //istrina posto forma
                     $('.forma:last-child').remove();
                 });
             });
