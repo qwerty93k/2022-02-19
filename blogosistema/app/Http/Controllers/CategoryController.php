@@ -18,6 +18,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::sortable()->get();
+
         return view('category.index', ['categories' => $categories]);
     }
 

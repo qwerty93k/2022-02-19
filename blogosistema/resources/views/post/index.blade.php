@@ -32,7 +32,7 @@
                                 <th>@sortablelink('title', 'Title')</th>
                                 <th>@sortablelink('author_name', 'Author')</th>
                                 <th>@sortablelink('content', 'Content')</th>
-                                <th>@sortablelink('category_id', 'Category')</th>
+                                <th>@sortablelink('id', 'Category')</th>
                                 <th>Action</th>
                             </tr>
                             @foreach ($posts as $post)

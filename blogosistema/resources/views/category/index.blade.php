@@ -22,6 +22,7 @@
                                 <th>@sortablelink('id', 'Id')</th>
                                 <th>@sortablelink('title', 'Category')</th>
                                 <th>@sortablelink('description', 'Description')</th>
+                                <th>@sortablelink('','Post','')</th>
                                 <th>Action</th>
                             </tr>
                             @foreach ($categories as $category)
@@ -29,6 +30,7 @@
                                     <td>{{$category->id}}</td>
                                     <td>{{$category->title}}</td>
                                     <td>{{$category->description}}</td>
+                                    <td>{{count($category->postCount)}}</td>
                                     <td>
                                         <a class="btn btn-primary" href="{{route('category.edit', [$category])}}">Edit</a>
                                         <a class="btn btn-secondary" href="{{route('category.show', [$category])}}">Show</a>
