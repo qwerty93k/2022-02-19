@@ -17,10 +17,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::sortable()->get();
-
+        //controlleryje cia reikia truputi pakeist
+        // $categories = Category::sortable()->get();
+        $categories = Category::withCount('postCount')->sortable()->get(); //with count prideda prie grazinamu rezultatu papildoma stulpeli su kiek postu turi kiekvienas kategorij
+        // i skliaustelius rasoma RYSIO FUNCKIJA
+        // dd($categories);
         return view('category.index', ['categories' => $categories]);
     }
+
 
     /**
      * Show the form for creating a new resource.

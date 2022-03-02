@@ -15,6 +15,16 @@
                         {{session()->get('success_message')}}
                     </div>
                 @endif
+
+
+                    {{-- Surasysiu +- eiga cia kaip komentara  --}}
+                    {{-- 1. Norint rikiuoti pagal kazkoki rysi(na pvz kaip cia pagal category post ) su sortable moduliu, pirma redaguoti modeli --}}
+                    {{-- // cia pasakoma sortable moduliui kad rikiuosime pagal stulpeli kuris originaliai duomenu bazeje neegzistuoja. pavadinima galima suteikt
+                    // bet koki, taciau kintamasis turi buti $sortableAs --}}
+                    {{-- 2. ziurim controlleri --}}
+                    {{-- 3.pakeitus controleri @sortablelink rasomas pavadinimas, koks yra $sortableAs kintamasis --}}
+                    {{-- tuojau, iveliau klaida --}}
+
                 <a class="btn btn-primary" href="{{route('category.create')}}">Create Category</a>
                 <div class="card">
                         <table class="table table-striped">
@@ -22,7 +32,7 @@
                                 <th>@sortablelink('id', 'Id')</th>
                                 <th>@sortablelink('title', 'Category')</th>
                                 <th>@sortablelink('description', 'Description')</th>
-                                <th>@sortablelink('','Post','')</th>
+                                <th>@sortablelink('post_count_count','Posts')</th>
                                 <th>Action</th>
                             </tr>
                             @foreach ($categories as $category)

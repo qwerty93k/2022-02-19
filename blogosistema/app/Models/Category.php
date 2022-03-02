@@ -14,6 +14,9 @@ class Category extends Model
 
     public $sortable = ['id', 'title', 'description'];
 
+    public $sortableAs = ['post_count_count']; // cia pasakoma sortable moduliui kad rikiuosime pagal stulpeli kuris originaliai duomenu bazeje neegzistuoja. pavadinima reikia suteikti toki
+    // koks gaunamas po dd() operacijos, taciau kintamasis turi buti $sortableAs
+
     public function postCount()
     {
         return $this->hasMany(Post::class, 'category_id', 'id');
